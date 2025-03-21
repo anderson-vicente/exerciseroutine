@@ -6,8 +6,8 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUsername } from '../../store/slices/userSlice';
 import { RootState } from '../../store/store';
-import styles from './ts_styles';
 import WorkoutCalendar from 'features/workout-calendar/WorkoutCalendar';
+import styles from './styles';
 
 
 const TreinarScreen: React.FC = () => {
@@ -16,11 +16,11 @@ const TreinarScreen: React.FC = () => {
   const username = useSelector((state: RootState) => state.user.username);
 
   useEffect(() => {
-    dispatch(setUsername('Anderson Vicente')); // Nome hard-coded
+    dispatch(setUsername('Anderson Vicente'));
   }, [dispatch]);
 
-  const handleCardPress = (treinoId: string, treinoTitle: string) => {
-    navigation.navigate('ExerciseList', { treinoId, treinoTitle });
+  const handleCardPress = (exerciceId: string, exerciceTitle: string) => {
+    navigation.navigate('ExerciseList', { exerciceId, exerciceTitle });
   };
 
   return (

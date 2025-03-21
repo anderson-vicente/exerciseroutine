@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,
-    paddingBottom: 20, // Adiciona um espaço extra no final para melhor rolagem
+    paddingBottom: 20,
   },
   container: {
     flex: 1,

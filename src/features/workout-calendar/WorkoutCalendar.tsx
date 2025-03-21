@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Alert } from 'react-native';
 import { Calendar } from 'react-native-calendars';
 import { MarkedDates } from 'react-native-calendars/src/types';
 
@@ -20,6 +20,8 @@ interface WorkoutNames {
 const WorkoutCalendar = () => {
   const [markedDates, setMarkedDates] = useState<MarkedDates>({});
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [selectedDay, setSelectedDay] = useState<string | null>(null);
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
   const workoutColors: WorkoutColors = {
     1: '#FF5733',
@@ -79,14 +81,16 @@ const WorkoutCalendar = () => {
     loadWorkoutDates();
   }, []);
 
+  const handleDayPress = (day: { dateString: string }) => {
+    Alert.alert('Dia selecionado:', day.dateString);
+  };
+
   return (
     <View style={styles.outerContainer}>
       <Calendar
         style={styles.calendar}
         markedDates={markedDates}
-        onDayPress={(day) => {
-          console.log('Dia selecionado:', day);
-        }}
+        onDayPress={handleDayPress}
         monthFormat={'MMMM yyyy'}
         hideExtraDays={true}
         firstDay={1}
@@ -128,42 +132,68 @@ const WorkoutCalendar = () => {
 };
 
 const styles = StyleSheet.create({
-  outerContainer: {
-    width: '100%',
-    alignSelf: 'stretch',
-    backgroundColor: '#fff',
-    marginBottom: 20
-  },
-  calendar: {
-    width: '100%',
-    paddingLeft: 0,
-    paddingRight: 0
-  },
-  legendContainer: {
-    marginTop: 20,
-    padding: 10,
-    backgroundColor: '#f9f9f9',
-    borderRadius: 8
-  },
-  legendTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 10
-  },
-  legendItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 8
-  },
-  colorBox: {
-    width: 10,
-    height: 10,
-    borderRadius: 2,
-    marginRight: 10
-  },
-  legendText: {
-    fontSize: 12
-  }
-});
+    outerContainer: {
+      width: '100%',
+      alignSelf: 'stretch',
+      backgroundColor: '#fff',
+      marginBottom: 20
+    },
+    calendar: {
+      width: '100%',
+      paddingLeft: 0,
+      paddingRight: 0
+    },
+    legendContainer: {
+      marginTop: 20,
+      padding: 10,
+      backgroundColor: '#f9f9f9',
+      borderRadius: 8
+    },
+    legendItem: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: 8
+    },
+    colorBox: {
+      width: 10,
+      height: 10,
+      borderRadius: 2,
+      marginRight: 10
+    },
+    legendText: {
+      fontSize: 12
+    },
+    modalContainer: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'rgba(0, 0, 0, 0.5)'
+    },
+    modalContent: {
+      width: '80%',
+      backgroundColor: '#fff',
+      padding: 20,
+      borderRadius: 10,
+      alignItems: 'center'
+    },
+    modalTitle: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      marginBottom: 10
+    },
+    modalText: {
+      fontSize: 16,
+      marginBottom: 20
+    },
+    closeButton: {
+      backgroundColor: '#FF5733',
+      padding: 10,
+      borderRadius: 5
+    },
+    closeButtonText: {
+      color: '#fff',
+      fontWeight: 'bold'
+    }
+  });
 
 export default WorkoutCalendar;

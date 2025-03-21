@@ -1,8 +1,8 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import DrawerNavigator from './DrawerNavigator';
-import ExerciseListScreen from '../features/home/ExerciseListScreen';
-import { RootStackParamList } from './types'; // Importe o RootStackParamList
+import { RootStackParamList } from './types';
+import ExerciseListScreen from 'features/exercises-list/ExerciseListScreen';
 
 const Stack = createStackNavigator<RootStackParamList>();
 

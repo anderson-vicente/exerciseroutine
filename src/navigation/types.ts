@@ -4,7 +4,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 // Define as rotas do Stack Navigator
 export type RootStackParamList = {
   Main: undefined;
-  ExerciseList: { treinoId: string, treinoTitle: string };
+  ExerciseList: { exerciceId: string, exerciceTitle: string };
 };
 
 // Tipos para navegação e rotas

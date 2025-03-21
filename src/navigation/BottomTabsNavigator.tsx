@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import TreinarScreen from '../features/home/index';
-import EditarTreinosScreen from '../features/home/EditarTreinosScreen';
+import WorkoutListScreen from 'features/workou-list/WorkoutListScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -9,7 +9,7 @@ const BottomTabsNavigator: React.FC = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Treinar" component={TreinarScreen} />
-      <Tab.Screen name="Editar Treinos" component={EditarTreinosScreen} />
+      <Tab.Screen name="Editar Treinos" component={WorkoutListScreen} />
     </Tab.Navigator>
   );
 };

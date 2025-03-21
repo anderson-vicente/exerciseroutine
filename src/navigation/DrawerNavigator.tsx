@@ -5,7 +5,7 @@ import { Ionicons, MaterialIcons } from '@expo/vector-icons'; // Importe os íco
 import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 import TreinarScreen from '../features/home/index';
-import EditarTreinosScreen from '../features/home/EditarTreinosScreen';
+import WorkoutListScreen from '../features/workou-list/WorkoutListScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -37,7 +37,7 @@ const DrawerNavigator: React.FC = () => {
           drawerIcon: ({ focused, color, size }) => {
             if (route.name === 'Treinar') {
               return <MaterialIcons name="checklist" size={size} color={color} />;
-            } else if (route.name === 'Editar Treinos') {
+            } else if (route.name === 'Meus Treinos') {
               return <MaterialIcons name="edit" size={size} color={color} />;
             }
           },
@@ -47,15 +47,15 @@ const DrawerNavigator: React.FC = () => {
           drawerInactiveTintColor: '#333',
           drawerLabelStyle: { fontSize: 16 },
           drawerItemStyle: {
-            borderRadius: 6, // Bordas mais sutis para o item selecionado
+            borderRadius: 6,
             marginVertical: 4,
             paddingVertical: 2,
-            marginHorizontal: 0, // Remover margem horizontal para ocupar mais espaço
+            marginHorizontal: 0,
           }
         })}
       >
         <Drawer.Screen name="Treinar" component={TreinarScreen} />
-        <Drawer.Screen name="Editar Treinos" component={EditarTreinosScreen} />
+        <Drawer.Screen name="Meus Treinos" component={WorkoutListScreen} />
       </Drawer.Navigator>
     );
 };
@@ -78,7 +78,6 @@ const styles = StyleSheet.create({
     drawerItemsContainer: {
       paddingHorizontal: 8,
     }
-    // Remova os estilos drawerItem e drawerItemLabel
 });
 
 export default DrawerNavigator;

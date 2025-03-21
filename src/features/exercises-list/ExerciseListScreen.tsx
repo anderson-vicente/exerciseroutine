@@ -139,16 +139,16 @@ type ExerciseListScreenProps = {
 };
 
 const ExerciseListScreen: React.FC<ExerciseListScreenProps> = ({ route }) => {
-  const { treinoId, treinoTitle } = route.params;
+  const { exerciceId, exerciceTitle } = route.params;
   const [checkedItems, setCheckedItems] = useState<Record<string, boolean>>({});
 
   const navigation = useNavigation();
 
   useEffect(() => {
-    navigation.setOptions({ title: treinoTitle });
-  }, [navigation, treinoTitle]);
+    navigation.setOptions({ title: exerciceTitle });
+  }, [navigation, exerciceTitle]);
 
-  const dadosTreino = treinosData[treinoId];
+  const dadosTreino = treinosData[exerciceId];
 
   const handleCheckboxPress = (id: string) => {
     setCheckedItems((prev) => ({
