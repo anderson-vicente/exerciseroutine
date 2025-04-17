@@ -1,15 +1,15 @@
-import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import TreinarScreen from '../features/home/index';
-import WorkoutListScreen from 'features/workou-list/WorkoutListScreen';
+import React from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import HomeScreen from "../features/home/index";
+import WorkoutListScreen from "features/workout-list/WorkoutListScreen";
 
 const Tab = createBottomTabNavigator();
 
 const BottomTabsNavigator: React.FC = () => {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="Treinar" component={TreinarScreen} />
-      <Tab.Screen name="Editar Treinos" component={WorkoutListScreen} />
+      <Tab.Screen name="Treinar" component={HomeScreen} />
+      <Tab.Screen name="Meus Treinos" component={WorkoutListScreen} />
     </Tab.Navigator>
   );
 };

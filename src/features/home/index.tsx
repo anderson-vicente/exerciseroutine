@@ -1,26 +1,26 @@
-import React, { useEffect } from 'react';
-import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from '../../navigation/types';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { useDispatch, useSelector } from 'react-redux';
-import { setUsername } from '../../store/slices/userSlice';
-import { RootState } from '../../store/store';
-import WorkoutCalendar from 'features/workout-calendar/WorkoutCalendar';
-import styles from './styles';
+import React, { useEffect } from "react";
+import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { RootStackParamList } from "../../navigation/types";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { useDispatch, useSelector } from "react-redux";
+import { setUsername } from "../../store/slices/userSlice";
+import { RootState } from "../../store/store";
+import WorkoutCalendar from "features/workout-calendar/WorkoutCalendar";
+import styles from "./styles";
 
-
-const TreinarScreen: React.FC = () => {
-  const navigation = useNavigation<StackNavigationProp<RootStackParamList, 'Main'>>();
+const HomeScreen: React.FC = () => {
+  const navigation =
+    useNavigation<StackNavigationProp<RootStackParamList, "Main">>();
   const dispatch = useDispatch();
   const username = useSelector((state: RootState) => state.user.username);
 
   useEffect(() => {
-    dispatch(setUsername('Anderson Vicente'));
+    dispatch(setUsername("Anderson Vicente"));
   }, [dispatch]);
 
   const handleCardPress = (exerciceId: string, exerciceTitle: string) => {
-    navigation.navigate('ExerciseList', { exerciceId, exerciceTitle });
+    navigation.navigate("WorkoutExerciseList", { exerciceId, exerciceTitle });
   };
 
   return (
@@ -49,4 +49,4 @@ const TreinarScreen: React.FC = () => {
   );
 };
 
-export default TreinarScreen;
+export default HomeScreen;
